@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use rust_int::Int;
+    use optimal_int::Int;
 
     #[test]
     fn test_new() {
