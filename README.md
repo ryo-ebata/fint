@@ -37,4 +37,4 @@ cargo test
 
 ## ライセンス
 
-このライブラリは MIT ライセンスの下で公開されています。詳細は LICENSE をご覧ください。
+このライブラリは MIT ライセンスの下で公開されています。詳細は [LICENSE](https://github.com/ryo-ebata/rust-int/blob/main/LICENSE) をご覧ください。
