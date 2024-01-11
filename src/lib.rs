@@ -1,5 +1,5 @@
-mod to_int_arg;
-use to_int_arg::{ToIntArg, IntArg};
+mod utils;
+use utils::to_int_arg::{ToIntArg, IntArg};
 
 #[derive(PartialEq, Debug)]
 pub enum Int {
@@ -29,12 +29,12 @@ impl Int {
                         _ => panic!("Value out of range for Int types"),
                     }
                 } else {
-                    match i as u128 {
-                        v if v <= u8::MAX as u128 => Int::U8(v as u8),
-                        v if v <= u16::MAX as u128 => Int::U16(v as u16),
-                        v if v <= u32::MAX as u128 => Int::U32(v as u32),
-                        v if v <= u64::MAX as u128 => Int::U64(v as u64),
-                        v => Int::U128(v),
+                    match i {
+                        v if v <= u8::MAX as i128 => Int::U8(v as u8),
+                        v if v <= u16::MAX as i128 => Int::U16(v as u16),
+                        v if v <= u32::MAX as i128 => Int::U32(v as u32),
+                        v if v <= u64::MAX as i128 => Int::U64(v as u64),
+                        v => Int::U128(v as u128),
                     }
                 }
             },
@@ -50,3 +50,4 @@ impl Int {
         }
     }
 }
+
