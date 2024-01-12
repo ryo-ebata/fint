@@ -1,45 +1,45 @@
 // src/utils/sub.rs
-use crate::Int;
+use crate::Fint;
 use std::ops::Sub;
 
-impl Sub for Int {
+impl Sub for Fint {
     type Output = Self;
 
     fn sub(self, other: Self) -> Self {
         match (self, other) {
-            (Int::I8(a), Int::I8(b)) => Int::new(a - b),
-            (Int::I16(a), Int::I16(b)) => Int::new(a - b),
-            (Int::I32(a), Int::I32(b)) => Int::new(a - b),
-            (Int::I64(a), Int::I64(b)) => Int::new(a - b),
-            (Int::I128(a), Int::I128(b)) => Int::new(a - b),
-            (Int::U8(a), Int::U8(b)) => Int::new(a - b),
-            (Int::U16(a), Int::U16(b)) => Int::new(a - b),
-            (Int::U32(a), Int::U32(b)) => Int::new(a - b),
-            (Int::U64(a), Int::U64(b)) => Int::new(a - b),
-            (Int::U128(a), Int::U128(b)) => Int::new(a - b),
+            (Fint::I8(a), Fint::I8(b)) => Fint::new(a - b),
+            (Fint::I16(a), Fint::I16(b)) => Fint::new(a - b),
+            (Fint::I32(a), Fint::I32(b)) => Fint::new(a - b),
+            (Fint::I64(a), Fint::I64(b)) => Fint::new(a - b),
+            (Fint::I128(a), Fint::I128(b)) => Fint::new(a - b),
+            (Fint::U8(a), Fint::U8(b)) => Fint::new(a - b),
+            (Fint::U16(a), Fint::U16(b)) => Fint::new(a - b),
+            (Fint::U32(a), Fint::U32(b)) => Fint::new(a - b),
+            (Fint::U64(a), Fint::U64(b)) => Fint::new(a - b),
+            (Fint::U128(a), Fint::U128(b)) => Fint::new(a - b),
             _ => panic!("Cannot subtract different types"),
         }
     }
 }
 
-macro_rules! impl_sub_for_int {
+macro_rules! impl_sub_for_Fint {
     ($($t:ty),*) => {
         $(
-            impl Sub<$t> for Int {
+            impl Sub<$t> for Fint {
                 type Output = Self;
 
                 fn sub(self, other: $t) -> Self {
                     match self {
-                        Int::I8(a) => Int::new(a as i128 - other as i128),
-                        Int::I16(a) => Int::new(a as i128 - other as i128),
-                        Int::I32(a) => Int::new(a as i128 - other as i128),
-                        Int::I64(a) => Int::new(a as i128 - other as i128),
-                        Int::I128(a) => Int::new(a - other as i128),
-                        Int::U8(a) => Int::new(a as u128 - other as u128),
-                        Int::U16(a) => Int::new(a as u128 - other as u128),
-                        Int::U32(a) => Int::new(a as u128 - other as u128),
-                        Int::U64(a) => Int::new(a as u128 - other as u128),
-                        Int::U128(a) => Int::new(a - other as u128),
+                        Fint::I8(a) => Fint::new(a as i128 - other as i128),
+                        Fint::I16(a) => Fint::new(a as i128 - other as i128),
+                        Fint::I32(a) => Fint::new(a as i128 - other as i128),
+                        Fint::I64(a) => Fint::new(a as i128 - other as i128),
+                        Fint::I128(a) => Fint::new(a - other as i128),
+                        Fint::U8(a) => Fint::new(a as u128 - other as u128),
+                        Fint::U16(a) => Fint::new(a as u128 - other as u128),
+                        Fint::U32(a) => Fint::new(a as u128 - other as u128),
+                        Fint::U64(a) => Fint::new(a as u128 - other as u128),
+                        Fint::U128(a) => Fint::new(a - other as u128),
                     }
                 }
             }
@@ -47,4 +47,4 @@ macro_rules! impl_sub_for_int {
     };
 }
 
-impl_sub_for_int!(i8, i16, i32, i64, i128, u8, u16, u32, u64, u128);
+impl_sub_for_Fint!(i8, i16, i32, i64, i128, u8, u16, u32, u64, u128);
