@@ -1,7 +1,7 @@
 mod utils;
 use utils::to_int_arg::{ToIntArg, IntArg};
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Debug, Clone)]
 pub enum Fint {
     I8(i8),
     I16(i16),
